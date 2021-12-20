@@ -1,10 +1,24 @@
-import { InjectionKey } from 'vue'
-import { createStore, Store, useStore as baseUseStore } from 'vuex'
-import RootStateTypes, { AllStateTypes } from './types'
+import { createStore } from 'vuex'
 
-import numFactoryModule from './modules/NumFactory'
+import tab from './modules/tab'
 
-export const store = createStore<RootStateTypes>({
+// const path = require('path')
+// const requireModules = require.context('./modules', true, /index\.(ts|js)$/iu)
+
+// const modules = {}
+
+// requireModules.keys().forEach(filePath => {
+//   const modular = requireModules(filePath)
+//   let name = path.resolve(filePath, '..')
+//   name = name.split('/').pop()
+//   modules[name] = {
+//     namespaced: true,
+//     ...modular.default
+//   }
+// })
+
+
+export const store = createStore({
   state: {
     text: 'This is Vuex Root.state.text'
   },
@@ -12,12 +26,6 @@ export const store = createStore<RootStateTypes>({
   mutations: {},
   actions: {},
   modules: {
-    numFactoryModule
+    tab
   }
 })
-
-export const key: InjectionKey<Store<RootStateTypes>> = Symbol('vue-store')
-
-export function useStore<T = AllStateTypes>() {
-  return baseUseStore<T>(key)
-}

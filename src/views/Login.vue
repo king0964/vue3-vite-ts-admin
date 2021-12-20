@@ -69,7 +69,7 @@ const submitForm = async () => {
   (loginForm as any).value.validate((valid: boolean) => {
     if (valid) {
       utils.localSet('token', state.ruleForm.username)
-      router.push('/')
+      router.push('/home')
     } else {
       console.log('error submit!!')
       return false

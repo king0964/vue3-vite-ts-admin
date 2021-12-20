@@ -6,20 +6,33 @@
     @open="handleOpen"
     @close="handleClose"
   >
-    <el-menu-item index="/">
+    <el-menu-item index="/home">
       <el-icon><icon-menu /></el-icon>
       <span>首页</span>
     </el-menu-item>
     <el-sub-menu index="1">
       <template #title>
-        <el-icon><location /></el-icon>
-        <span>系统管理</span>
+        <el-icon><Document /></el-icon>
+        <span>常用页面</span>
       </template>
       <el-sub-menu index="1-1">
+        <template #title>列表</template>
+        <el-menu-item index="/list">普通列表</el-menu-item>
+      </el-sub-menu>
+      <el-menu-item index="/form">表单</el-menu-item>
+      <el-menu-item index="/statistics">统计报表</el-menu-item>
+    </el-sub-menu>
+    <el-sub-menu index="2">
+      <template #title>
+        <el-icon><Setting /></el-icon>
+        <span>系统管理</span>
+      </template>
+      <el-menu-item index="/role">角色管理</el-menu-item>
+      <!-- <el-sub-menu index="2-1">
         <template #title>常用页面</template>
         <el-menu-item index="/form">表单</el-menu-item>
         <el-menu-item index="/list">列表</el-menu-item>
-      </el-sub-menu>
+      </el-sub-menu> -->
     </el-sub-menu>
   </el-menu>
 </template>
@@ -27,10 +40,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { Location, Menu as IconMenu } from '@element-plus/icons'
+import { Document, Menu as IconMenu, Setting } from '@element-plus/icons'
 
 let currentPath = ref<any>('/')
-// const router = useRouter()
 const route = useRoute()
 
 const handleOpen = (key: any, keyPath: any) => {
@@ -44,7 +56,6 @@ currentPath = computed(() =>route.path)
 </script>
 
 <style scoped lang="less">
-@import '../style/style.less';
 .el-menu {
   height: 100%;
 }

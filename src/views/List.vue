@@ -51,7 +51,9 @@
         <el-input v-model="details.passtime" placeholder="" disabled></el-input>
       </el-form-item>
     </el-form>
-    <div style="text-align: center;"><el-button type="primary" @click="drawer = false">关闭</el-button></div>
+    <div style="text-align: center">
+      <el-button type="primary" @click="drawer = false">关闭</el-button>
+    </div>
   </el-drawer>
 </template>
 

@@ -84,10 +84,7 @@
 import { ref, reactive, toRefs } from 'vue'
 import { Plus } from '@element-plus/icons'
 import WangEditor from '@/components/WangEditor.vue'
-// 获取编辑器实例html
-const editor = ref()
-// 编辑器实例对象
-let instance: any = ''
+
 const ruleForm = ref(null)
 const state = reactive({
   ruleForms: {

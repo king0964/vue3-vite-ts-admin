@@ -15,17 +15,25 @@ const localSet = (key: any, value: any) => {
 const localRemove = (key: any) => {
   window.localStorage.removeItem(key)
 }
-
-// 判断内容是否含有表情字符，现有数据库不支持。
-const hasEmoji = (str = '') => {
-  const reg =
-    /[^\u0020-\u007E\u00A0-\u00BE\u2E80-\uA4CF\uF900-\uFAFF\uFE30-\uFE4F\uFF00-\uFFEF\u0080-\u009F\u2000-\u201f\u2026\u2022\u20ac\r\n]/g
-  return str.match(reg) && (str.match(reg) || '0').length
+// 删除功能
+const delData = (arr: any, name: any, listData: any) => {
+  // console.log('listData', arr, listData)
+  const temListData = JSON.parse(JSON.stringify(listData))
+  for (let i = listData.length - 1; i >= 0; i--) { // 需要使用倒循环，不然i会溢出
+    for (let j in arr) {
+      if (listData[i]['date'] == arr[j]) {
+        temListData.splice(i, 1)
+        break
+      }
+    }
+  }
+  listData = temListData
+  return listData
 }
 
-export default({
+export default ({
   localGet,
   localSet,
   localRemove,
-  hasEmoji
+  delData
 })

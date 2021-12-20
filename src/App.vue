@@ -1,19 +1,12 @@
 <template>
-  <Main v-if="state.showMenu" />
-  <router-view v-else />
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import { reactive, onUnmounted } from 'vue'
+import { onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
-import Main from '@/components/Main.vue'
 import utils from './utils'
-const noMenu = ['/login']
 const router = useRouter()
-const state = reactive({
-  showMenu: true,
-  currentPath: '/'
-})
 
 const unwatch = router.beforeEach((to, from, next) => {
   if (to.path == '/login') {
@@ -29,8 +22,6 @@ const unwatch = router.beforeEach((to, from, next) => {
       next()
     }
   }
-  state.showMenu = !noMenu.includes(to.path)
-  state.currentPath = to.path
 })
 
 onUnmounted(() => {
