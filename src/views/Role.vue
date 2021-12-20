@@ -12,6 +12,7 @@
     ref="multipleTable"
     :data="state.tableData"
     style="width: 100%"
+    empty-text="没有数据"
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" />
@@ -30,6 +31,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ElMessageBox, ElMessage } from 'element-plus'
 import { reactive, toRefs } from 'vue'
 import utils from '../utils'
 
@@ -79,8 +81,7 @@ const state = reactive({
 })
 
 // 查询操作
-const onSubmit = () => {
-}
+const onSubmit = () => {}
 
 const handleSelectionChange = (val: any) => {
   val.map((v: any, i: number) => {
@@ -89,7 +90,24 @@ const handleSelectionChange = (val: any) => {
 }
 
 const batchDel = () => {
-  state.tableData = utils.delData(state.multipleSelection, 'date', tableData.value)
+  ElMessageBox.confirm('确定删除数据?', '提示信息', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+    .then(() => {
+      state.tableData = utils.delData(state.multipleSelection, 'date', tableData.value)
+      ElMessage({
+        type: 'success',
+        message: '删除成功'
+      })
+    })
+    .catch(() => {
+      // ElMessage({
+      //   type: 'info',
+      //   message: 'Delete canceled',
+      // })
+    })
 }
 
 // 单独删除
