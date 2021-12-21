@@ -1,4 +1,4 @@
-> vue3-vite-ts-admin是一个后台管理系统，它是基于vue3,ts和element-plus，现阶段只有登录、首页、列表和表单几个模块。
+> vue3-vite-ts-admin是一个后台管理系统，它是基于vue3，ts和element-plus，现阶段只有登录、首页、列表和表单几个模块。
 
 ## 技术栈
 
