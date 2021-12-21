@@ -1,5 +1,9 @@
 <template>
   <div class="header">
+    <!-- <g-icon class="cursor-pointer" :name="isCollapse ? 'expand' : 'fold'" @click="foldHandle()" /> -->
+    <el-icon color="#409EFC" size="100" @click="foldHandle()">
+      <component :is="isCollapse ? 'Expand' : 'Fold'" />
+    </el-icon>
     <div class="title" @click="router.push('/')">Vue3 admin</div>
     <div class="exit">
       <el-button type="text" @click="open">退出登录</el-button>
@@ -8,10 +12,13 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import utils from '../utils'
 const router = useRouter()
+const store = useStore()
 const open = () => {
   ElMessageBox.confirm('确定退出系统?', '提示信息', {
     confirmButtonText: '确定',
@@ -29,6 +36,13 @@ const open = () => {
     .catch(() => {
       console.log('返回')
     })
+}
+
+const isCollapse = computed(() => store.state.menu.isCollapse)
+
+// 展开/收起菜单
+const foldHandle = () => {
+  store.dispatch('setIsCollapse', !isCollapse.value)
 }
 </script>
 

@@ -46,7 +46,7 @@ onBeforeMount(() => {
 /**
  * @description: 标签点击路由跳转事件
  */
-const clickHandle = ({ index }) => {
+const clickHandle = ({ index }: any) => {
   const tab = tabs.value[+index]
   router.push({
     name: tab.name,
@@ -57,7 +57,7 @@ const clickHandle = ({ index }) => {
  * @description: 标签删除事件
  * @return {*}
  */
-const removeHandle = (name) => {
+const removeHandle = (name: any) => {
   store.dispatch('removeHandle', [name])
 }
 </script>

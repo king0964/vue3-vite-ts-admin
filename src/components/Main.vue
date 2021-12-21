@@ -35,4 +35,7 @@ import Tabsbar from '@/components/Tabsbar.vue'
   --el-header-padding: 0;
   --el-header-height: 100px;
 }
+.el-aside {
+  width: auto;
+}
 </style>

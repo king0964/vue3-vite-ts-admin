@@ -82,7 +82,6 @@
 
 <script setup lang="ts">
 import { ref, reactive, toRefs } from 'vue'
-import { Plus } from '@element-plus/icons'
 import WangEditor from '@/components/WangEditor.vue'
 
 const ruleForm = ref(null)

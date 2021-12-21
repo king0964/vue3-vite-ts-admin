@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 
 import tab from './modules/tab'
+import menu from './modules/menu'
 
 // const path = require('path')
 // const requireModules = require.context('./modules', true, /index\.(ts|js)$/iu)
@@ -26,6 +27,7 @@ export const store = createStore({
   mutations: {},
   actions: {},
   modules: {
-    tab
+    tab,
+    menu
   }
 })

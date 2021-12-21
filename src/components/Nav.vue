@@ -5,9 +5,10 @@
     class="el-menu-vertical-demo"
     @open="handleOpen"
     @close="handleClose"
+    :collapse="isCollapse"
   >
     <el-menu-item index="/home">
-      <el-icon><icon-menu /></el-icon>
+      <el-icon><Menu /></el-icon>
       <span>首页</span>
     </el-menu-item>
     <el-sub-menu index="1">
@@ -40,10 +41,11 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { Document, Menu as IconMenu, Setting } from '@element-plus/icons'
+import { useStore } from 'vuex'
 
 let currentPath = ref<any>('/')
 const route = useRoute()
+const store = useStore()
 
 const handleOpen = (key: any, keyPath: any) => {
   // console.log(key, keyPath)
@@ -51,7 +53,8 @@ const handleOpen = (key: any, keyPath: any) => {
 const handleClose = (key: any, keyPath: any) => {
   // console.log(key, keyPath)
 }
-console.log(route.path)
+const isCollapse = computed(() => store.state.menu.isCollapse)
+
 currentPath = computed(() =>route.path)
 </script>
 
