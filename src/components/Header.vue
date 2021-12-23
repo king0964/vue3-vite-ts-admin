@@ -1,7 +1,6 @@
 <template>
   <div class="header">
-    <!-- <g-icon class="cursor-pointer" :name="isCollapse ? 'expand' : 'fold'" @click="foldHandle()" /> -->
-    <el-icon color="#409EFC" size="100" @click="foldHandle()">
+    <el-icon color="#409EFC" @click="foldHandle()">
       <component :is="isCollapse ? 'Expand' : 'Fold'" />
     </el-icon>
     <div class="title" @click="router.push('/')">Vue3 admin</div>

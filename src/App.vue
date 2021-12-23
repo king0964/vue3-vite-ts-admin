@@ -1,11 +1,14 @@
 <template>
-  <router-view />
+  <el-config-provider :locale="zhCn">
+    <router-view />
+  </el-config-provider>
 </template>
 
 <script setup lang="ts">
 import { onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import utils from './utils'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 const router = useRouter()
 
 const unwatch = router.beforeEach((to, from, next) => {

@@ -34,10 +34,12 @@
   <el-pagination
     background
     v-model:currentPage.sync="cPage"
-    layout="prev, pager, next"
+    layout="total, sizes, prev, pager, next, jumper"
     :total="paginObj.total"
+    :page-size="paginObj.pagesize"
+    @size-change="handleSizeChange"
     @current-change="current_change"
-    style="margin-top: 15px"
+    style="margin-top: 15px; text-align: center"
   ></el-pagination>
   <el-drawer v-model="drawer" title="详情页面">
     <el-form :inline="true" :model="formInline" class="demo-form-inline details">
@@ -118,6 +120,11 @@ const handleClick = (row: any) => {
 const current_change = (currentPage: number) => {
   state.paginObj.currentPage = currentPage
   cPage.value = currentPage
+}
+
+const handleSizeChange = (val: any) => {
+  console.log(`${val} items per page`)
+  state.paginObj.pagesize = val
 }
 
 const { formInline, paginObj } = toRefs(state)

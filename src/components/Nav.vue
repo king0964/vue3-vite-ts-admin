@@ -29,6 +29,7 @@
         <span>系统管理</span>
       </template>
       <el-menu-item index="/role">角色管理</el-menu-item>
+      <el-menu-item index="/menu">菜单管理</el-menu-item>
       <!-- <el-sub-menu index="2-1">
         <template #title>常用页面</template>
         <el-menu-item index="/form">表单</el-menu-item>

@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <el-aside :width="menuWidth">
       <Nav />
     </el-aside>
     <el-container>
@@ -24,6 +24,12 @@
 import Header from '@/components/Header.vue'
 import Nav from '@/components/Nav.vue'
 import Tabsbar from '@/components/Tabsbar.vue'
+
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+const menuWidth = computed(() => store.state.menu.menuWidth)
 </script>
 
 <style scoped lang="less">
@@ -34,8 +40,5 @@ import Tabsbar from '@/components/Tabsbar.vue'
 .el-header {
   --el-header-padding: 0;
   --el-header-height: 100px;
-}
-.el-aside {
-  width: auto;
 }
 </style>

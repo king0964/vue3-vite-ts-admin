@@ -72,6 +72,18 @@ const routes: Array<RouteRecordRaw> = [
           keepAlive: true,
         }
       }
+      ,
+      {
+        path: '/menu',
+        name: 'Menu',
+        component: () => import('@/views/Menu.vue'),
+        meta: {
+          id: 'menu',
+          title: '菜单管理',
+          isTab: true,
+          keepAlive: true,
+        }
+      }
     ]
   }
 ]
